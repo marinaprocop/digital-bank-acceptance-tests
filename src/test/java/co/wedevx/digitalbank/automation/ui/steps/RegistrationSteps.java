@@ -21,8 +21,8 @@ public class RegistrationSteps {
         assertEquals("Digital Bank", getDriver().getTitle(), "Registration page Title mismatch");
     }
 
-    @When("User creates account with following fields with mocked email ans ssn")
-    public void user_creates_account_with_following_fields_with_mocked_email_ans_ssn(List<Map<String, String>> registrationTestDataListMap) {
+    @When("User creates account with following fields")
+    public void user_creates_account_with_following_fields(List<Map<String, String>> registrationTestDataListMap) {
         registrationPage.fillOutRegistrationForm(registrationTestDataListMap);
     }
 
@@ -35,5 +35,9 @@ public class RegistrationSteps {
     public void userShouldSeeTheRequiredFieldMessage(String fieldName, String expectedErrorMessage) {
         String actualErrorMessage=  registrationPage.getRequiredFieldErrorMessage(fieldName);
         assertEquals(expectedErrorMessage, actualErrorMessage, "The error message of required " + fieldName+ " field mismatch.");
+    }
+
+    @Then("The following user info should be saved in the DB")
+    public void theFollowingUserInfoShouldBeSavedInTheDB(List<Map<String, String>> expectedUserProfileInfoInDBList) {
     }
 }
