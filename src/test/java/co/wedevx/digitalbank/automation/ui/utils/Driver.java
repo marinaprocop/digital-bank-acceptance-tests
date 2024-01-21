@@ -33,6 +33,10 @@ public class Driver {
             String browser = ConfigReader.getPropertiesValue("digitalbank.browser");
 
             switch (browser.toLowerCase()){
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                    break;
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver =new ChromeDriver();
@@ -65,10 +69,9 @@ public class Driver {
                     String browserVersion= ConfigReader.getPropertiesValue("digitalbank.saucelab.browser.version");
                     driver = loadSauceLabs(platform, browserSauceLabs, browserVersion);
                     break;
-                case "firefox":
                 default:
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                   // WebDriverManager.firefoxdriver().setup();
+                   // driver = new FirefoxDriver();
                     break;
             }
         }
